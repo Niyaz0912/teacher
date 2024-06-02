@@ -41,3 +41,38 @@ print(teacher.get_teacher_data())
 print(teacher.add_mark("Петр Сидоров", 4))
 print(teacher.remove_mark("Дмитрий Степанов",3))
 print(teacher.give_a_consultation("9Б"))
+
+class DisciplineTeacher(Teacher):
+    def __init__(self, name, education, experience, discipline, job_title):
+        super().__init__(name, education, experience)
+        self._discipline = discipline
+        self._job_title = job_title
+
+    def get_discipline(self):
+        return self._discipline
+
+    def get_job_title(self):
+        return self._job_title
+
+    def set_job_title(self, job_title):
+        self._job_title = job_title
+
+    def get_teacher_data(self):
+        return f"{self.name}, {self.education}, {self.experience}, {self._discipline}, {self._job_title}"
+
+    def add_mark(self, student_name, mark, discipline):
+
+        return f"{self.name} поставил оценку {mark} студенту {student_name}.\n{discipline}"
+
+    def remove_mark(self, student_name, mark, discipline):
+        return f"{self.name} удалил оценку {mark} студенту {student_name}.\n{discipline}"
+
+    def give_a_consultation(self, student_class, discipline, job_title):
+        return f"{self.name} провел консультацию в классе {student_class}.\nПо {discipline} как {job_title}"
+
+teacher2 = DisciplineTeacher("Иван Петров","образование БГПУ"," опыт работы 4 года",
+                             "предмет Химия", "должность Директор")
+print(teacher2.get_teacher_data())
+print(teacher2.add_mark("Николай Иванов", 4, "Предмет: Химия"))
+print(teacher2.remove_mark("Дмитрий Степанов",3, "Предмет: Химия"))
+print(teacher2.give_a_consultation("10Б", "предмету Химия", "Директор"))
